@@ -9,9 +9,9 @@ class Score {
   }
 }
 
-void loadStudentData(String filePath) {
+void loadStudentData(String input) {
   try {
-    final file = File(filePath);
+    final file = File('lib/students.txt');
     final lines = file.readAsLinesSync();
     List<StudentScore> studentsList = [];
 
@@ -25,9 +25,13 @@ void loadStudentData(String filePath) {
       studentsList.add(StudentScore(name, score));
     }
 
-    // print(studentsList);
+    // for (var a in studentsList) {
+    //   print("${a.name}, ${a.score}");
+    // }
     for (var a in studentsList) {
-      print("${a.name}, ${a.score}");
+      if (input == a.name) {
+        print("${a.name}, ${a.score}");
+      }
     }
   } catch (e) {
     print("학생 데이터를 불러오는 데 실패했습니다: $e");
@@ -56,8 +60,9 @@ void main() {
   // var s = Score(90);
   // s.showInfo();
 
-  // var ss = StudentScore("홍길동", 68);
+  // var ss = StudentScore;
   // ss.showInfo();
-
-  loadStudentData(students);
+  print("어떤 학생의 점수를 확인하시겠습니까?");
+  String? input = stdin.readLineSync();
+  loadStudentData(input!);
 }
