@@ -22,4 +22,7 @@ class StudentScore extends Score {
 void main() {
   var s = Score(90);
   s.showInfo();
+
+  var ss = StudentScore("홍길동", 68);
+  ss.showInfo();
 }
