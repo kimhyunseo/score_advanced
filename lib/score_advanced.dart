@@ -31,6 +31,8 @@ void loadStudentData(String input) {
     for (var a in studentsList) {
       if (input == a.name) {
         print("${a.name}, ${a.score}");
+      } else if ((input != a.name)) {
+        print("유효하지 않은 이름입니다.");
       }
     }
   } catch (e) {
@@ -54,7 +56,15 @@ class StudentScore extends Score {
   }
 }
 
-var students = 'lib/students.txt';
+void saveResults(String content) {
+  try {
+    final file = File('lib/result.txt');
+    file.writeAsStringSync(content);
+    print("저장이 완료되었습니다.");
+  } catch (e) {
+    print("저장에 실패했습니다: $e");
+  }
+}
 
 void main() {
   // var s = Score(90);
@@ -65,4 +75,5 @@ void main() {
   print("어떤 학생의 점수를 확인하시겠습니까?");
   String? input = stdin.readLineSync();
   loadStudentData(input!);
+  saveResults("예시 콘텐츠11");
 }
