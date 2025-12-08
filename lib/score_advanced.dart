@@ -13,6 +13,7 @@ void loadStudentData(String filePath) {
   try {
     final file = File(filePath);
     final lines = file.readAsLinesSync();
+    List<StudentScore> studentsList = [];
 
     for (var line in lines) {
       final parts = line.split(',');
@@ -20,6 +21,13 @@ void loadStudentData(String filePath) {
 
       String name = parts[0];
       int score = int.parse(parts[1]);
+
+      studentsList.add(StudentScore(name, score));
+    }
+
+    // print(studentsList);
+    for (var a in studentsList) {
+      print("${a.name}, ${a.score}");
     }
   } catch (e) {
     print("학생 데이터를 불러오는 데 실패했습니다: $e");
@@ -34,6 +42,11 @@ class StudentScore extends Score {
   @override
   void showInfo() {
     print("이름: $name, 점수: $score");
+  }
+
+  @override
+  String toString() {
+    return "($name $score)";
   }
 }
 
