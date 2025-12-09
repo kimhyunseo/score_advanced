@@ -9,7 +9,7 @@ class Score {
   }
 }
 
-void loadStudentData(String input) {
+void loadStudentData() {
   try {
     final file = File('lib/students.txt');
     final lines = file.readAsLinesSync();
@@ -25,15 +25,19 @@ void loadStudentData(String input) {
       studentsList.add(StudentScore(name, score));
     }
 
-    var result = studentsList
-        .where((element) => element.name == input)
-        .firstOrNull;
+    while (true) {
+      String? input = stdin.readLineSync();
+      var result = studentsList
+          .where((element) => element.name == input)
+          .firstOrNull;
 
-    if (result != null) {
-      print("이름: ${result.name}, 점수: ${result.score}");
-      saveResults("이름: ${result.name}, 점수: ${result.score}");
-    } else if (result == null) {
-      print("유효하지 않은 이름입니다.");
+      if (result != null) {
+        print("이름: ${result.name}, 점수: ${result.score}");
+        saveResults("이름: ${result.name}, 점수: ${result.score}");
+        break;
+      } else if (result == null) {
+        print("유효하지 않은 이름입니다.");
+      }
     }
   } catch (e) {
     print("학생 데이터를 불러오는 데 실패했습니다: $e");
@@ -68,6 +72,6 @@ void saveResults(String content) {
 
 void main() {
   print("어떤 학생의 점수를 확인하시겠습니까?");
-  String? input = stdin.readLineSync();
-  loadStudentData(input!);
+
+  loadStudentData();
 }
