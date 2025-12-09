@@ -25,15 +25,14 @@ void loadStudentData(String input) {
       studentsList.add(StudentScore(name, score));
     }
 
-    // for (var a in studentsList) {
-    //   print("${a.name}, ${a.score}");
-    // }
-    for (var a in studentsList) {
-      if (input == a.name) {
-        print("${a.name}, ${a.score}");
-      } else if ((input != a.name)) {
-        print("유효하지 않은 이름입니다.");
-      }
+    var result = studentsList
+        .where((element) => element.name == input)
+        .firstOrNull;
+
+    if (result != null) {
+      print("이름: ${result.name}, 점수: ${result.score}");
+    } else if (result == null) {
+      print("유효하지 않은 이름입니다.");
     }
   } catch (e) {
     print("학생 데이터를 불러오는 데 실패했습니다: $e");
@@ -67,13 +66,7 @@ void saveResults(String content) {
 }
 
 void main() {
-  // var s = Score(90);
-  // s.showInfo();
-
-  // var ss = StudentScore;
-  // ss.showInfo();
   print("어떤 학생의 점수를 확인하시겠습니까?");
   String? input = stdin.readLineSync();
   loadStudentData(input!);
-  saveResults("예시 콘텐츠11");
 }
