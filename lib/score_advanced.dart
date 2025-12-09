@@ -31,6 +31,7 @@ void loadStudentData(String input) {
 
     if (result != null) {
       print("이름: ${result.name}, 점수: ${result.score}");
+      saveResults("이름: ${result.name}, 점수: ${result.score}");
     } else if (result == null) {
       print("유효하지 않은 이름입니다.");
     }
