@@ -98,7 +98,7 @@ mainScore();
 
 개발 과정에서 마주친 문제와 해결 과정입니다.
 
-List<Object> 활용: List에는 기본 타입(String, int)뿐만 아니라 커스텀 객체(StudentScore)도 담을 수 있음을 이해하고 적용하여 데이터를 객체 단위로 관리했습니다.
+List<Object\> 활용: List에는 기본 타입(String, int)뿐만 아니라 커스텀 객체(StudentScore)도 담을 수 있음을 이해하고 적용하여 데이터를 객체 단위로 관리했습니다.
 
 toString 오버라이딩: 객체 출력 시 `Instance of...`가 나오는 문제를 해결하기 위해 `toString()`을 재정의(@override)하여 데이터가 직관적으로 보이도록 개선했습니다.
 
